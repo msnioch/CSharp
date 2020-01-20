@@ -1,4 +1,4 @@
-﻿/*  Lotto random numbers lists v2. The program generates a number of suggestions lists.
+﻿/*  Lotto random numbers lists v4. The program generates a number of suggestions lists.
  *  One suggestion list has 6 random numbers form 1 to 49. The numbers can't repeat.*/
 
 using System;
@@ -42,7 +42,7 @@ namespace Lotto_random_numbers_lists
 
                 list.Sort();                                            //Sort the numbers in the list.
 
-                Console.WriteLine("\nLotto numbers proposition " + (i + 1));
+                Console.WriteLine("\nLotto numbers suggestions " + (i + 1));
 
                 for (int k = 0; k < list.Count; k++)                    //Write the numbers list.
                 {
@@ -58,21 +58,39 @@ namespace Lotto_random_numbers_lists
 
             Console.Write("Please enter a integer between 1 and 25: ");
 
-            int how = Convert.ToInt32(Console.ReadLine());              //Convert user input to int.
-
-            Lotto_generator[] suggestion = new Lotto_generator[how];    //Numbers sugesstion array of class Lotto_generator.
-
-            Random random = new Random();                               //Create random numbers of class Random.
-
-            for (int i = 0; i < how; i++)
+            try
             {
-                suggestion[i] = new Lotto_generator();                  //Create new suggestion object of class Lotto_generator.
-                suggestion[i].Print_list(i, random);                    //Call Print_list method of object suggestion[i].
+                int how = Convert.ToInt32(Console.ReadLine());              //Convert user input to int.
+
+                if (how <= 0 || how > 25)                                   //If the number <= 0 or number > 25.
+                {
+                    Console.WriteLine("\nThe number isn't correct. You should enter a integer between 1 and 25!");
+                    
+                    Console.ReadKey();                                      //Hold console after error.
+
+                    System.Environment.Exit(0);                             //Exit programm after error.
+                }
+
+                Lotto_generator[] suggestion = new Lotto_generator[how];    //Numbers sugesstion array of class Lotto_generator.
+
+                Random random = new Random();                               //Create random numbers of class Random.
+
+                for (int i = 0; i < how; i++)
+                {
+                    suggestion[i] = new Lotto_generator();                  //Create new suggestion object of class Lotto_generator.
+                    suggestion[i].Print_list(i, random);                    //Call Print_list method of object suggestion.
+                }
+
+                Console.WriteLine("\nGood Luck!");
+
             }
 
-            Console.Write("\nGood Luck!");
+            catch (Exception e)
+            {
+                Console.WriteLine("\n" + e.Message);                        //If the number isn't an integer.
+            }
 
-            Console.ReadKey();                                          //Hold console at end.
+            Console.ReadKey();                                              //Hold console after programm.
         }
     }
 }

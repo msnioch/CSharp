@@ -11,9 +11,9 @@ namespace Quiz_app
 {
     class Quiz_game
     {
-        static int points_Sum = 0;                                                                  //Declarate a global integer of sum points.
+        private static int points_Sum = 0;                                                           //Declarate a global integer of sum points.
 
-        static string file_Patch;                                                                   //Declarate a global string of question file patch.
+        private static string file_Patch;                                                            //Declarate a global string of question file patch.
 
         class Quiz
         {
@@ -32,7 +32,7 @@ namespace Quiz_app
                 Load();                                                                             //Calls a method Load().
             }
 
-            private void Load()                                                                      //Method Load().
+            private void Load()                                                                     //Method Load().
             {
                 string [] lines = File.ReadAllLines (file_Patch);                                   //Assign file lines to string array.
 

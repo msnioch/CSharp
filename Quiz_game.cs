@@ -1,4 +1,4 @@
-﻿/*Quiz game - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
+﻿/*Quiz game v 2 - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
  * If opening the text file fails, you will be asked for the file path.*/
 
 using System;
@@ -13,7 +13,7 @@ namespace Quiz_app
     {
         private static int points_Sum = 0;                                                           //Declarate a global integer of sum points.
 
-        private static string file_Patch;                                                            //Declarate a global string of question file patch.
+        private static string file_Patch = "Quiz.txt";                                                            //Declarate a global string of question file patch.
 
         class Quiz
         {
@@ -95,16 +95,23 @@ namespace Quiz_app
 
                     Console.WriteLine("The correct answer is {0}!", correct_Answer);                //If user answer is false then show the correct answer.
 
-                    Thread.Sleep(4000);                                                             //Stop the console for 4 seconds.
+                    Thread.Sleep(6000);                                                             //Stop the console for 4 seconds.
                 }
             }
         }
 
-        static bool File_Exists(string patch)                                                       //Test if the quesion file exists.
+        static bool File_Exists(ref string patch)                                                   //Test if the quesion file exists.
         {
             if (! File.Exists (patch))                                                              //Negation.
             {
                 Console.Write("\nThe question file doesn't exists!\nPlease enter the quesion file patch or write END to exit application: ");
+
+                patch = Console.ReadLine();
+
+                if (patch == "END")
+                {
+                    Environment.Exit(0);
+                }
 
                 return false;                                                                       //If the quesion file not exists return false.
             }
@@ -120,22 +127,10 @@ namespace Quiz_app
             Console.WriteLine("*************** C# Quiz ***************");
 
             Console.Write("Press ENTER to start the Quiz. Good Luck!");
+            
+            Console.ReadLine();
 
-            do
-            {
-                file_Patch = Console.ReadLine();
-
-                if (file_Patch == "END")
-                {
-                    Environment.Exit(0);
-                }
-
-                else if (file_Patch == "")
-                {
-                    file_Patch = "Quiz.txt";
-                }
-            }
-            while (! File_Exists (file_Patch));                                                     //Condition to stop the loop
+            while (! File_Exists (ref file_Patch));                                                 //Condition to stop the loop
 
             int how_Many_Questions = File.ReadLines(file_Patch).Count() / 6;                        //Compute number of questions in file.
 

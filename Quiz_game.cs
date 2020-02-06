@@ -1,4 +1,4 @@
-﻿/*Quiz game v4 - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
+﻿/*Quiz game v5 - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
  * If opening the text file fails, you will be asked for the file path.*/
 
 using System;
@@ -65,7 +65,7 @@ namespace Quiz_app
 
                 Console.WriteLine("d) " + answer_D);                                                //Show the answer d.
 
-                Console.Write("\nWrite answer a, b, c or d: ");                                     //Show the user answers.
+                Console.Write("\nWrite correct answer a, b, c or d and press ENTER: ");             //Show the user answers.
 
                 CheckAnswer();
             }
@@ -104,7 +104,7 @@ namespace Quiz_app
         {
             if (! File.Exists (patch))                                                              //Negation if the patch is correct.
             {
-                Console.Write("\nThe question file doesn't exists!\nPlease enter the quesion file patch or write END to exit application: ");
+                Console.Write("\nThe question file doesn't exists!\nPlease write the quesion file patch or write END then press ENTER to exit application: ");
 
                 patch = Console.ReadLine();                                                         //Change file patch or exit application with command END.
 
@@ -161,6 +161,8 @@ namespace Quiz_app
             }
 
             Console.WriteLine("\n*************** End Quiz ***************");
+
+            Console.Write("Press ENTER to exit.");
 
             Console.ReadLine();                                                                 //Stop console.
         }

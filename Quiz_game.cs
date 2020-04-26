@@ -1,5 +1,5 @@
-﻿/*Quiz game v5 - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
- * If opening the text file fails, you will be asked for the file path.*/
+﻿/* Quiz game v5 - it's a game that read the questions from a text file. The application'll try to open the text file in application folder. 
+   If opening the text file fails, you will be asked for the file path.*/
 
 using System;
 using System.Collections.Generic;
